@@ -27,7 +27,7 @@
         <h2>Book an Appointment with Dr. [Doctor's Name]</h2>
 
         <!-- Appointment Form -->
-        <form action="book_details" method="POST">
+        <form action="book_details" method="POST" onsubmit="return validateDate()">
 
             <!-- Patient's Name -->
             <div class="form-group">
@@ -70,14 +70,14 @@
 
             <!-- Confirmation Buttons -->
             <div class="form-group">
-                <button type="submit" class="button">Book Appointment</button><br>
+                <button type="submit"  class="button">Book Appointment</button><br>
                 <button type="button" class="button cancel-button" >Cancel</button>
             </div>
         </form>
     </div>
 
     <!-- Link to external JavaScript file -->
-    <script src="/static/js/script.js"></script>
+    <script src="/static/js/book_details.js"></script>
 
 </body>
 </html>
