@@ -1,14 +1,17 @@
-function validateDate() {
-    const appointmentDate = document.getElementById('appointment_date').value;
-    const today = new Date().toISOString().split('T')[0]; 
+// Function to download as PDF
+function downloadPDF() {
+    const element = document.getElementById("acknowledgment-content");
+    const options = {
+        margin:       0.5,
+        filename:     'Appointment_Confirmation.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
     
-    if (appointmentDate < today) {
-        alert("Choose proper appointment date!!!");
-        return false; 
-    }
-    return true;
+    html2pdf().set(options).from(element).save();
 }
-// Toggle dropdown visibility
+
 function toggleDropdown(event) {
     event.preventDefault();
     document.querySelector(".dropdown-menu").classList.toggle("show");
@@ -26,4 +29,3 @@ function toggleDropdown(event) {
       }
     }
   }
-  

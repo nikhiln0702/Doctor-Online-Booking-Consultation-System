@@ -1,12 +1,18 @@
-function validateDate() {
-    const appointmentDate = document.getElementById('appointment_date').value;
-    const today = new Date().toISOString().split('T')[0]; 
+function validateDateofBirth() {
+    // Get the value of Date of Birth input
+    const DoB = document.getElementById('dob').value;
     
-    if (appointmentDate < today) {
-        alert("Choose proper appointment date!!!");
-        return false; 
+    // Convert the date string (YYYY-MM-DD) into a Date object
+    const today = new Date();
+    const birthDate = new Date(DoB); // Date object of input value
+
+    // Compare the two dates
+    if (birthDate > today) {
+        alert("Date of Birth cannot be in the future.");
+        return false; // Prevent form submission
     }
-    return true;
+
+    return true; // Allow form submission
 }
 // Toggle dropdown visibility
 function toggleDropdown(event) {

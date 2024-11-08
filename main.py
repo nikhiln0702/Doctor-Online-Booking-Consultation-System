@@ -100,13 +100,13 @@ def details():
     #copy from bookdetails
     if request.method=='POST':
          name = request.form['name']
-         date = request.form['dob']
-         tel = request.form['tel']
-         address = request.form['address']
+         dob = request.form['dob']
+         cn = request.form['cn']
+         city = request.form['city']
          conn=sql_connection()
          cursor=conn.cursor(dictionary=True)
          try:
-             cursor.execute('INSERT INTO users (username,email, password) VALUES (%s, %s)', (name,date))
+             cursor.execute('INSERT INTO patient_details (patient_name,patient_dob,patient_cn,patient_city) VALUES (%s,%s,%s,%s)', (name,dob,cn,city))
              conn.commit()
              flash('Registration successful! You can now log in.','success')
              return redirect(url_for('plogin'))
@@ -131,7 +131,7 @@ def booking():
     doctors = get_doctors()  # Retrieve doctor data from the database
     return render_template('booking.html', doctors=doctors)  # Pass data to the template
 
-
+#booking details
 @app.route("/book_details", methods=['GET', 'POST'])
 def book_details():
     if request.method == 'POST':
@@ -164,7 +164,7 @@ def book_details():
 
     return render_template('book_details.html')
 
-
+#shows current appointments
 @app.route("/pappointment")
 def pappointment():
     # Connect to the database
@@ -189,6 +189,16 @@ def pappointment():
     # Render the appointments.html template and pass the appointments data
     return render_template("pappointment.html", appointments=appointments)
 
+#logout
+@app.route('/plogout')
+def plogout():
+    session.pop('username', None)
+    session.pop('user_id', None)
+    return redirect(url_for('plogin'))
+
+@app.route("/acknow")
+def acknow():
+    return render_template('acknow.html')
 
 
 @app.route("/user")

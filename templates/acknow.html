@@ -4,14 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment Confirmation</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS file -->
+    <link rel="stylesheet" href="/static/css/acknow.css">
+    <link rel="stylesheet" href="/static/css/nav.css">
+
 </head>
 <body>
-
-    <div class="container">
+    <nav>
+        <div class="logo-container">
+          <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+          <a href="phome">
+          <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+          </a>
+        </div>
+          <ul>
+              <li><a href="phome">Home</a></li>
+              <li><a href="pappointment">My Appointments</a></li>
+              <li><a href="#">Health Tips</a></li>
+              <li class="profile">
+                <a href="#" onclick="toggleDropdown(event)">
+                  <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
+                </a>
+                <div class="dropdown-menu">
+                  <a href="user_profile">User Profile</a>
+                  <a href="plogout">Logout</a>
+                </div>
+              </li>
+          </ul>
+      </nav>
+    <div class="container" id="acknowledgment-content">
         <h2>Appointment Confirmed!</h2>
-        
-        <p>Thank you for booking an appointment with Dr. [Doctor's Name]. Your appointment has been successfully scheduled.</p>
+        <p>Thank you for booking an appointment with Dr. <span id="doctor-name">[Doctor's Name]</span>.</p>
 
         <!-- Appointment Details Section -->
         <div class="appointment-details">
@@ -22,34 +44,11 @@
             <p><strong>Payment Method:</strong> <span id="payment-option">[Payment Option]</span></p>
         </div>
 
-        <button class="button" onclick="window.location.href='index.html'">Back to Home</button>
+        
     </div>
+    <button class="button" onclick="downloadPDF()">Download Confirmation</button>
 
-    <script>
-        // Check if we're on the confirmation page
-        if (window.location.pathname.endsWith("appointment_confirmation.html")) {
-            // Get the query parameters from the URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const patientName = urlParams.get('patient_name');
-            const appointmentDate = urlParams.get('appointment_date');
-            const appointmentTime = urlParams.get('appointment_time');
-            const paymentOption = urlParams.get('payment_option');
-
-            // Set the values in the HTML
-            if (patientName) {
-                document.getElementById('patient-name').textContent = patientName;
-            }
-            if (appointmentDate) {
-                document.getElementById('appointment-date').textContent = appointmentDate;
-            }
-            if (appointmentTime) {
-                document.getElementById('appointment-time').textContent = appointmentTime;
-            }
-            if (paymentOption) {
-                document.getElementById('payment-option').textContent = paymentOption;
-            }
-        }
-    </script>
-
+    <script src="/static/js/acknow.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </body>
 </html>

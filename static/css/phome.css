@@ -4,6 +4,7 @@ html, body {
     padding: 0;
     font-family: 'Arial', sans-serif;
     height: 100%;
+    width: 100%;
     background-color: #3498db ;
 }
 
@@ -99,20 +100,7 @@ header p {
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
-    .appointment-card {
-        max-width: 90%;
-        padding: 15px;
-    }
 
-    .appointment-card h2 {
-        font-size: 1.4em;
-    }
-
-    .appointment-card p {
-        font-size: 1em;
-    }
-}
 
 
 /* Footer Section */
@@ -156,21 +144,4 @@ footer p {
     margin-top: 10px;
 }
 
-/* Footer Responsive Design */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-    }
 
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    footer .footer-links ul {
-        flex-direction: column;
-    }
-
-    footer .footer-links ul li {
-        margin: 5px 0;
-    }
-}

@@ -20,16 +20,15 @@
         </form>
         <p id="psign">Don't have an account? <a href="{{ url_for('signup') }}">Register here</a></p>
     
-    
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
-                {% for category, message in messages %}
-                    <div class="{{ category }}">{{ message }}</div>
-                {% endfor %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
             {% endif %}
         {% endwith %}
-    
-    
     </div>
   
   <script src="/static/js/script.js"  defer></script>

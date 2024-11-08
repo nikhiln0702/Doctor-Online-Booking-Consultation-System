@@ -13,17 +13,25 @@
         <div class="logo-container">
           <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
           <a href="phome">
-            <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
-            </a>
-      </div>
+          <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+          </a>
+        </div>
           <ul>
               <li><a href="phome">Home</a></li>
-              <li><a href="pappointment">Appointments</a></li>
-              <li><a href="#">Medical Records</a></li>
+              <li><a href="pappointment">My Appointments</a></li>
               <li><a href="#">Health Tips</a></li>
-              <li><a href="#">Contact</a></li>
+              <li class="profile">
+                <a href="#" onclick="toggleDropdown(event)">
+                  <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
+                </a>
+                <div class="dropdown-menu">
+                  <a href="user_profile">User Profile</a>
+                  <a href="plogout">Logout</a>
+                </div>
+              </li>
           </ul>
       </nav>
+      
     <h1>My Appointments</h1>
 
     <!-- Appointment Table -->
@@ -55,6 +63,6 @@
             {% endif %}
         </tbody>
     </table>
-
+    <script src="/static/js/pappointment.js"></script>
 </body>
 </html>

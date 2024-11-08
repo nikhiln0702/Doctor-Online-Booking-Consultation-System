@@ -18,9 +18,16 @@
         <ul>
             <li><a href="phome">Home</a></li>
             <li><a href="pappointment">My Appointments</a></li>
-            <li><a href="#">Medical Records</a></li>
             <li><a href="#">Health Tips</a></li>
-            <li><a href="#">Contact</a></li>
+            <li class="profile">
+              <a href="#" onclick="toggleDropdown(event)">
+                <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
+              </a>
+              <div class="dropdown-menu">
+                <a href="user_profile">User Profile</a>
+                <a href="plogout">Logout</a>
+              </div>
+            </li>
         </ul>
     </nav>
     
@@ -50,6 +57,6 @@
       <p>&copy; 2024 HealthCare Platform | All Rights Reserved</p>
   </footer>
 
-  <script src="/static/js/script.js"  defer></script>
+  <script src="/static/js/phome.js"  defer></script>
 </body>
 </html>

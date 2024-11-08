@@ -5,9 +5,17 @@ nav {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     display: flex;
     justify-content: space-between; /* Space between logo/title and nav links */
-    align-items: center; /* Vertically center content */
     padding: 0.5em 2em; /* Add padding for better spacing */
-    z-index: 1000;
+    position: fixed; /* Fix the navbar at the top */
+    top: 0; /* Make sure it is at the very top */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Keep it on top of other content */
+}
+
+/* Adjust body to prevent content from hiding under navbar */
+body {
+    margin-top: 70px; /* Add space equal to the height of the navbar */
 }
 
 /* Logo and Title Styling */
@@ -58,24 +66,50 @@ nav ul li a:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column; /* Stack the logo/title and menu items vertically */
-        padding: 1em;
-    }
+/* Specific styling for user profile image */
+.user_profile {
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    border-radius: 50%; /* Make it circular */
+    vertical-align: middle;
+    margin-top: 0px;
+}
 
-    .logo-container {
-        margin-bottom: 1em; /* Add space between logo/title and navigation links */
-        justify-content: center;
-    }
+ul li:last-child {
+    display: flex;
+    align-items: center; /* Align profile icon vertically with other items */
+}
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
+/* Dropdown menu styling */
+.profile {
+    position: relative;
+}
 
-    nav ul li {
-        margin: 10px 0;
-    }
+.dropdown-menu {
+    display: none; /* Initially hidden */
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 150px;
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown when toggled */
+.show {
+    display: block;
 }
