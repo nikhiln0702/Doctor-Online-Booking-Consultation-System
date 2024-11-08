@@ -1,0 +1,81 @@
+/* Navigation Bar Styling */
+nav {
+    width: 100%;
+    background: linear-gradient(45deg, #333, #555); /* Gradient background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    display: flex;
+    justify-content: space-between; /* Space between logo/title and nav links */
+    align-items: center; /* Vertically center content */
+    padding: 0.5em 2em; /* Add padding for better spacing */
+    z-index: 1000;
+}
+
+/* Logo and Title Styling */
+.logo-container {
+    display: flex;
+    align-items: center; /* Vertically align the logo and title */
+}
+
+.logo {
+    width: 40px; /* Adjust the logo size */
+    height: auto;
+    margin-right: 15px; /* Space between logo and title */
+}
+
+.site-title {
+    font-size: 1.5em; /* Title font size */
+    color: white;
+    font-weight: bold;
+}
+
+/* Navigation Links Styling */
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 1.5em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1em 1.2em;
+    display: block;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #fff;
+    background-color: #4a90e2;
+    transform: translateY(-3px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack the logo/title and menu items vertically */
+        padding: 1em;
+    }
+
+    .logo-container {
+        margin-bottom: 1em; /* Add space between logo/title and navigation links */
+        justify-content: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/signup.css">
+  <title>Register</title>
+</head>
+<body class="login">
+    <div class="loginContainer">
+        <h1 class="login">Register</h1>
+        <form action="/signup" method="post">
+            <label class="pl">Username</label>
+            <br>
+            <input type="text" class="logTxt" placeholder="Enter your username" name="username" required><br><br>
+            <label class="pl">Email</label>
+            <input type="email" class="logTxt" placeholder="Enter your email" name="email" required><br><br>
+            <label class="pl">Password</label>
+            <input type="password" class="logTxt" placeholder="Enter your password" name="password" required><br><br>
+            <button class="loginButton" type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('plogin') }}">Login here</a></p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+  <script src="/static/js/script.js"  defer></script>
+</body>
+</html>
+

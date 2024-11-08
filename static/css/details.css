@@ -1,0 +1,114 @@
+/* General Body Styling */
+body.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #8e44ad, #3498db); /* Gradient for a modern feel */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container Styling */
+.loginContainer {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    backdrop-filter: blur(15px); /* Blur effect on background */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect on the container */
+.loginContainer:hover {
+    transform: translateY(-10px);
+}
+
+/* Heading Styling */
+h1.login {
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* Label Styling */
+label.pl {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    display: inline-block;
+    color: #555;
+    text-align: left;
+    width: 100%;
+}
+
+/* Input Field Styling */
+input.logTxt {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.logTxt:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+
+/* Button Styling */
+button.loginButton {
+    width: 100%;
+    background-color: #8e44ad; /* Purple color */
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 1.1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+/* Button Hover and Active State */
+button.loginButton:hover {
+    background-color: #9b59b6; /* Lighter purple */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+button.loginButton:active {
+    background-color: #8e44ad; /* Darker purple on active */
+    transform: translateY(2px); /* Slight pressed effect */
+}
+
+/* Flash Message Styling */
+div.flash-message {
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #ffcccb;
+    color: #d8000c;
+    border: 1px solid #f5c2c7;
+    border-radius: 5px;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 480px) {
+    .loginContainer {
+        padding: 30px;
+        width: 90%;
+    }
+
+    h1.login {
+        font-size: 1.8em;
+    }
+
+    input.logTxt, button.loginButton {
+        font-size: 1em;
+        padding: 12px;
+    }
+}

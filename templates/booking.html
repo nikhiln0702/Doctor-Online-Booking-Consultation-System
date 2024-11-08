@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/booking.css">
+  <link rel="stylesheet" href="/static/css/nav.css">
+  <title>Book</title>
+</head>
+<body>
+  <nav>
+    <div class="logo-container">
+      <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+      <a href="phome">
+        <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+        </a>
+  </div>
+    
+    <ul>
+        <li><a href="phome">Home</a></li>
+        <li><a href="signup">Appointments</a></li>
+        <li><a href="#">Medical Records</a></li>
+        <li><a href="#">Health Tips</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+    <h1>Book an Appointment</h1>
+
+    
+    {% for doctor in doctors %}
+    <div class="doctor-card">
+        <h2>Dr. {{ doctor[0] }}</h2>
+        <p><strong>Specialization:</strong> {{ doctor[1] }}
+          <div class="experience-booking">
+            <p><strong>Experience:</strong> {{ doctor[2] }} years</p>
+            <div class="button-container">
+            <a href="book_details">
+                <button class="booking-button">Book Appointment</button>
+            </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+  <script src="/static/js/script.js"></script>
+</body>
+</html>

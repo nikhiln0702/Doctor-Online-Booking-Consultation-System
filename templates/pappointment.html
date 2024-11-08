@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments</title>
+    <link rel="stylesheet" href="/static/css/nav.css">
+
+    <link rel="stylesheet" href="/static/css/pappointment.css">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+          <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+          <a href="phome">
+            <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+            </a>
+      </div>
+          <ul>
+              <li><a href="phome">Home</a></li>
+              <li><a href="pappointment">Appointments</a></li>
+              <li><a href="#">Medical Records</a></li>
+              <li><a href="#">Health Tips</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </nav>
+    <h1>My Appointments</h1>
+
+    <!-- Appointment Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Patient Age</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
+                <th>Payment Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if appointments %}
+                {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment['patient_name'] }}</td>
+                        <td>{{ appointment['patient_age'] }}</td>
+                        <td>{{ appointment['appointment_date'] }}</td>
+                        <td>{{ appointment['appointment_time'] }}</td>
+                        <td>{{ appointment['payment_option'] }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">No appointments found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+</body>
+</html>

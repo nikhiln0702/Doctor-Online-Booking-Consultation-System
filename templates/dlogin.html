@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/dlogin.css">
+    <title>Doctor Login</title>
+</head>
+
+<body class="login">
+    <div class="loginContainer">
+        <h1 class="login">Doctor Login</h1>
+        <form action="/dlogin" method="post" id="doclogin">
+            <label class="pl">Username</label>
+            <br>
+            <input type="text" class="logTxt" placeholder="Enter your username" name="username" id="Username"
+                required><br><br>
+            <label class="pl">Password</label>
+            <br>
+            <input type="password" class="logTxt" placeholder="Enter your password" name="password" required><br><br>
+            <button class="loginButton" type="submit">Login</button>
+        </form>
+
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+    </div>
+
+    <script src="/static/js/script.js" defer></script>
+</body>
+
+</html>

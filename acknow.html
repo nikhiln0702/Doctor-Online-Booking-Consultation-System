@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS file -->
+</head>
+<body>
+
+    <div class="container">
+        <h2>Appointment Confirmed!</h2>
+        
+        <p>Thank you for booking an appointment with Dr. [Doctor's Name]. Your appointment has been successfully scheduled.</p>
+
+        <!-- Appointment Details Section -->
+        <div class="appointment-details">
+            <h3>Appointment Details:</h3>
+            <p><strong>Patient's Name:</strong> <span id="patient-name">[Patient Name]</span></p>
+            <p><strong>Appointment Date:</strong> <span id="appointment-date">[Appointment Date]</span></p>
+            <p><strong>Appointment Time:</strong> <span id="appointment-time">[Appointment Time]</span></p>
+            <p><strong>Payment Method:</strong> <span id="payment-option">[Payment Option]</span></p>
+        </div>
+
+        <button class="button" onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+
+    <script>
+        // Check if we're on the confirmation page
+        if (window.location.pathname.endsWith("appointment_confirmation.html")) {
+            // Get the query parameters from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const patientName = urlParams.get('patient_name');
+            const appointmentDate = urlParams.get('appointment_date');
+            const appointmentTime = urlParams.get('appointment_time');
+            const paymentOption = urlParams.get('payment_option');
+
+            // Set the values in the HTML
+            if (patientName) {
+                document.getElementById('patient-name').textContent = patientName;
+            }
+            if (appointmentDate) {
+                document.getElementById('appointment-date').textContent = appointmentDate;
+            }
+            if (appointmentTime) {
+                document.getElementById('appointment-time').textContent = appointmentTime;
+            }
+            if (paymentOption) {
+                document.getElementById('payment-option').textContent = paymentOption;
+            }
+        }
+    </script>
+
+</body>
+</html>

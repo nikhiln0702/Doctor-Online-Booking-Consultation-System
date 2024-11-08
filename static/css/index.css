@@ -1,0 +1,71 @@
+/* General Body Styling */
+body.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: Arial, sans-serif;
+}
+
+/* Center Container */
+#buttons-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Title */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+button.index {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Button Hover Effects */
+button.index:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Button Active State */
+button.index:active {
+    background-color: #388E3C;
+    transform: scale(1);
+}
+
+/* Button Focus State */
+button.index:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 480px) {
+    #buttons-container {
+        padding: 20px;
+    }
+
+    button.index {
+        font-size: 0.9em;
+        padding: 12px 24px;
+    }
+}

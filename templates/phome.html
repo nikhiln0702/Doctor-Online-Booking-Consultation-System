@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/phome.css">
+  <link rel="stylesheet" href="/static/css/nav.css">
+  <title>Home Page</title>
+</head>
+<body class="home">
+    <nav>
+      <div class="logo-container">
+        <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+        <a href="phome">
+        <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+        </a>
+      </div>
+        <ul>
+            <li><a href="phome">Home</a></li>
+            <li><a href="pappointment">My Appointments</a></li>
+            <li><a href="#">Medical Records</a></li>
+            <li><a href="#">Health Tips</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <b>
+        <header>
+            <h1>Welcome, {{ user_name }}!</h1>
+            <p>Your Health, Our Priority</p>
+        </header>
+
+        <!-- Card for booking appointments -->
+        <div class="appointment-card">
+            <img src="/static/images/book.png" alt="Logo" class="card">
+            <h2>Book an Appointment</h2>
+            <p>Choose your preferred doctor and schedule your appointment easily.</p>
+            <a href="booking"><button class="btn">Book Now</button></a>
+        </div>
+    </b>
+
+    <footer>
+      <div class="footer-links">
+          <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </div>
+      <p>&copy; 2024 HealthCare Platform | All Rights Reserved</p>
+  </footer>
+
+  <script src="/static/js/script.js"  defer></script>
+</body>
+</html>

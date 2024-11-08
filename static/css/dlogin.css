@@ -1,0 +1,112 @@
+/* General Body Styling */
+body.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #0f4b5c, #2f6f87); /* Darker blue gradient */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Login Container Styling */
+.loginContainer {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for modern effect */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    backdrop-filter: blur(15px); /* Blur effect on background */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect on the container */
+.loginContainer:hover {
+    transform: translateY(-10px);
+}
+
+/* Heading Styling */
+h1.login {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Label Styling */
+label.pl {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    display: inline-block;
+    color: #555;
+}
+
+/* Input Field Styling */
+input.logTxt {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.logTxt:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+/* Button Styling */
+button.loginButton {
+    width: 100%;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 1.1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+/* Button Hover and Active State */
+button.loginButton:hover {
+    background-color: #66BB6A;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+button.loginButton:active {
+    background-color: #388E3C;
+    transform: translateY(2px); /* Slightly pressed effect */
+}
+
+/* Flash Message Styling */
+div.flash-message {
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #ffcccb;
+    color: #d8000c;
+    border: 1px solid #f5c2c7;
+    border-radius: 5px;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 480px) {
+    .loginContainer {
+        padding: 30px;
+        width: 90%;
+    }
+
+    h1.login {
+        font-size: 1.6em;
+    }
+
+    input.logTxt, button.loginButton {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
