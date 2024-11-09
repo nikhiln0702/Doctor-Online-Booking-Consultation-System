@@ -1,0 +1,74 @@
+body{
+    background-color: #3498db ;
+    
+}
+.admin-container {
+    max-width: 1000px; /* Adjust width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    
+}
+
+.admin-container h1{
+    color: white;
+}
+.user{
+    border-radius: 80%
+}
+
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Ensures cards wrap on smaller screens */
+}
+
+.card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%; /* Each card takes up about one-third of the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.card button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.card:hover{
+    transform: translateY(-5px); /* Lift the card up when hovered */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+.card button:hover {
+    background-color: #0056b3;
+}
+
+/* Optional: Add responsive design to stack cards on smaller screens */
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Full width on smaller screens */
+    }
+}

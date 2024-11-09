@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/ahome.css">
+  <link rel="stylesheet" href="/static/css/nav.css">
+
+  <title>Admin Home</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+          <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+          <a href="dhome">
+          <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+          </a>
+        </div>
+          <ul>
+              <li><a href="ahome">Home</a></li>
+              <li><a href="aappointments">All Appointments</a></li>
+              <li class="profile">
+                <a href="#" onclick="toggleDropdown(event)">
+                  <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
+                </a>
+                <div class="dropdown-menu">
+                  <a href="alogout">Logout</a>
+                </div>
+              </li>
+          </ul>
+      </nav>
+
+  <div class="admin-container">
+    <h1>Admin Dashboard</h1>
+
+    <div class="cards-container">
+      <!-- Card for Viewing Users -->
+      <div class="card">
+        <img src="/static/images/user.png" alt="user" class="user">
+        <h2>View Users</h2>
+        <p>See all registered users.</p>
+        <a href="users">
+          <button>View Users</button>
+        </a>
+      </div>
+
+      <!-- Card for Viewing Doctors -->
+      <div class="card">
+        <img src="/static/images/doc.jpeg" alt="doctor" class="user">
+        <h2>View Doctors</h2>
+        <p>See all available doctors.</p>
+        <a href="doctor">
+          <button>View Doctors</button>
+        </a>
+      </div>
+
+      <!-- Card for Adding Doctors -->
+      <div class="card">
+        <img src="/static/images/add.png" alt="add" class="user">
+        <h2>Add Doctor</h2>
+        <p>Add a new doctor to the system.</p>
+        <a href="add">
+          <button>Add Doctor</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/admin.js"></script>
+</body>
+</html>
+

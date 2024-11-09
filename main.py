@@ -55,9 +55,28 @@ def plogin():
             return redirect(url_for('phome'))
         else:
                 flash('Invalid username or password','error')
-                
     
     return render_template('plogin.html')
+
+
+#admin login
+@app.route("/alogin",methods=['GET', 'POST'] )
+def alogin():
+    if request.method=='POST':
+        username = request.form['username']
+        password = request.form['password']
+        conn=sql_connection()
+        cursor=conn.cursor(dictionary=True)
+        cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
+        user = cursor.fetchone()
+        conn.close()
+        if user and bcrypt.check_password_hash(user['password'], password):
+            session['username'] = username
+            session['user_id'] = user['user_id']
+            return redirect(url_for('ahome'))
+        else:
+                flash('Invalid username or password','error')
+    return render_template('alogin.html')
 
 
 #signup
@@ -90,13 +109,21 @@ def phome():
         return redirect(url_for('plogin'))
     return render_template('phome.html', user_name=session['username'])
 
-
+#doctor home page
 @app.route('/dhome')
 def dhome():
     user_name = session.get('username', 'Guest')
     if 'username' not in session:
         return redirect(url_for('dlogin'))
     return render_template('dhome.html', user_name=session['username'])
+
+#admin home page
+@app.route('/ahome')
+def ahome():
+    user_name = session.get('username', 'Guest')
+    #if 'username' not in session:
+       # return redirect(url_for('alogin'))
+    return render_template('ahome.html', user_name=session['username'])
 
 
 #registration_details
@@ -212,6 +239,12 @@ def dlogout():
     session.pop('user_id', None)
     return redirect(url_for('dlogin'))
 
+@app.route('/alogout')
+def alogout():
+    session.pop('username', None)
+    session.pop('user_id', None)
+    return redirect(url_for('alogin'))
+
 
 #acknowlegement form
 @app.route("/acknow")
@@ -232,6 +265,22 @@ def pprofile():
 @app.route("/dprofile")
 def dprofile():
     return render_template('dprofile.html')
+
+@app.route("/users")
+def users():
+    return render_template('users.html')
+
+@app.route("/doctor")
+def doctor():
+    return render_template('doctor.html')
+
+@app.route("/add")
+def add():
+    return render_template('add.html')
+@app.route("/aappointments")
+def aappointments():
+    return render_template('aapointments.html')
+
 
 
 

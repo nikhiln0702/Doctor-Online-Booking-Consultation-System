@@ -7,6 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = '/dlogin';
     });
     document.getElementById("admin").addEventListener("click", function () {
-            window.location.href = '/admin';
+            window.location.href = '/alogin';
     });
 });
