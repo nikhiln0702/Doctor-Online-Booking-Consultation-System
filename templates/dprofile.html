@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/pprofile.css">
+  <link rel="stylesheet" href="/static/css/nav.css">
+
+  <title>User Profile</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+          <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+          <a href="dhome">
+          <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+          </a>
+        </div>
+          <ul>
+              <li><a href="dhome">Home</a></li>
+              <li><a href="dappointment">My Appointments</a></li>
+              <li class="profile">
+                <a href="#" onclick="toggleDropdown(event)">
+                  <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
+                </a>
+                <div class="dropdown-menu">
+                  <a href="dprofile">User Profile</a>
+                  <a href="dlogout">Logout</a>
+                </div>
+              </li>
+          </ul>
+      </nav>
+
+  <div class="profile-container">
+    <h1>Profile Details</h1>
+
+    <table class="profile-table">
+      <tr>
+        <th>Field</th>
+        <th>Details</th>
+      </tr>
+      <tr>
+        <td><strong>Name:</strong></td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td><strong>Phone:</strong></td>
+        <td> </td>
+      </tr>
+      <!-- Add any other user details you want to display -->
+    </table>
+
+    <div class="edit-button">
+      
+        <button>Edit Profile</button>
+      
+    </div>
+  </div>
+
+  <script src="/static/js/dprofile.js"></script>
+</body>
+</html>

@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/static/css/booking.css">
+  <link rel="stylesheet" href="/static/css/pprofile.css">
   <link rel="stylesheet" href="/static/css/nav.css">
-  <title>Book</title>
+
+  <title>User Profile</title>
 </head>
 <body>
   <nav>
@@ -30,24 +31,37 @@
           </li>
       </ul>
   </nav>
-  
-    <h1>Book an Appointment</h1>
 
-    
-    {% for doctor in doctors %}
-    <div class="doctor-card">
-        <h2>Dr. {{ doctor[0] }}</h2>
-        <p><strong>Specialization:</strong> {{ doctor[1] }}
-          <div class="experience-booking">
-            <p><strong>Experience:</strong> {{ doctor[2] }} years</p>
-            <div class="button-container">
-            <a href="book_details">
-                <button class="booking-button">Book Appointment</button>
-            </a>
-            </div>
-        </div>
+  <div class="profile-container">
+    <h1>Profile Details</h1>
+
+    <table class="profile-table">
+      <tr>
+        <th>Field</th>
+        <th>Details</th>
+      </tr>
+      <tr>
+        <td><strong>Name:</strong></td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td><strong>Phone:</strong></td>
+        <td> </td>
+      </tr>
+      <!-- Add any other user details you want to display -->
+    </table>
+
+    <div class="edit-button">
+      
+        <button>Edit Profile</button>
+      
     </div>
-    {% endfor %}
-  <script src="/static/js/booking.js"></script>
+  </div>
+
+  <script src="/static/js/pprofile.js"></script>
 </body>
 </html>

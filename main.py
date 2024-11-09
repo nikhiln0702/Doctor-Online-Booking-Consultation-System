@@ -224,10 +224,14 @@ def acknow():
 def tips():
     return render_template('tips.html')
 
+#profile pages
+@app.route("/pprofile")
+def pprofile():
+    return render_template('pprofile.html')
 
-@app.route("/user")
-def user():
-    return render_template('user.html')
+@app.route("/dprofile")
+def dprofile():
+    return render_template('dprofile.html')
 
 
 
