@@ -26,12 +26,13 @@ def dlogin():
         password = request.form['password']
         conn=sql_connection()
         cursor=conn.cursor(dictionary=True)
-        cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
+        cursor.execute('SELECT * FROM doctors WHERE doctor_username = %s', (username,))
         user = cursor.fetchone()
         conn.close()
-        if user and bcrypt.check_password_hash(user['password'], password):
-            session['username'] = username
-            session['user_id'] = user['user_id']
+        if user and bcrypt.check_password_hash(user['doctor_password'], password):
+            session['doc_name'] = user['doctor_name']
+            session['doc_id'] = user['doctor_id']
+            session['d_username']=user['doctor_username']
             return redirect(url_for('dhome'))
         else:
                 flash('Invalid username or password','error')
@@ -46,12 +47,13 @@ def plogin():
         password = request.form['password']
         conn=sql_connection()
         cursor=conn.cursor(dictionary=True)
-        cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
+        cursor.execute('SELECT * FROM patients WHERE patient_username = %s', (username,))
         user = cursor.fetchone()
         conn.close()
-        if user and bcrypt.check_password_hash(user['password'], password):
-            session['username'] = username
-            session['user_id'] = user['user_id']
+        if user and bcrypt.check_password_hash(user['patient_password'], password):
+            session['pat_id'] = user['patient_id']
+            session['name'] = user['patient_name']
+            session['p_username']=user['patient_username']
             return redirect(url_for('phome'))
         else:
                 flash('Invalid username or password','error')
@@ -67,12 +69,11 @@ def alogin():
         password = request.form['password']
         conn=sql_connection()
         cursor=conn.cursor(dictionary=True)
-        cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
+        cursor.execute('SELECT * FROM admin WHERE admin_username = %s', (username,))
         user = cursor.fetchone()
         conn.close()
-        if user and bcrypt.check_password_hash(user['password'], password):
-            session['username'] = username
-            session['user_id'] = user['user_id']
+        if user and bcrypt.check_password_hash(user['admin_password'], password):
+            session['a_username']=user['admin_username']
             return redirect(url_for('ahome'))
         else:
                 flash('Invalid username or password','error')
@@ -89,7 +90,7 @@ def signup():
          conn=sql_connection()
          cursor=conn.cursor(dictionary=True)
          try:
-             cursor.execute('INSERT INTO users (username,email, password) VALUES (%s, %s,%s)', (username,email, password))
+             cursor.execute('INSERT INTO patients (patient_username,patient_email, patient_password) VALUES (%s, %s,%s)', (username,email, password))
              conn.commit()
              return redirect(url_for('details'))
          except sql.IntegrityError:
@@ -104,26 +105,24 @@ def signup():
 #patient_home_page
 @app.route('/phome')
 def phome():
-    user_name = session.get('username', 'Guest')
     if 'username' not in session:
         return redirect(url_for('plogin'))
-    return render_template('phome.html', user_name=session['username'])
+    return render_template('phome.html', user_name=session['pat_name'])
 
 #doctor home page
 @app.route('/dhome')
 def dhome():
-    user_name = session.get('username', 'Guest')
     if 'username' not in session:
         return redirect(url_for('dlogin'))
-    return render_template('dhome.html', user_name=session['username'])
+    return render_template('dhome.html', user_name=session['doc_name'])
 
 #admin home page
 @app.route('/ahome')
 def ahome():
     user_name = session.get('username', 'Guest')
-    #if 'username' not in session:
-       # return redirect(url_for('alogin'))
-    return render_template('ahome.html', user_name=session['username'])
+    if 'username' not in session:
+       return redirect(url_for('alogin'))
+    return render_template('ahome.html', user_name=session['a_username'])
 
 
 #registration_details
@@ -138,7 +137,7 @@ def details():
          conn=sql_connection()
          cursor=conn.cursor(dictionary=True)
          try:
-             cursor.execute('INSERT INTO patient_details (patient_name,patient_dob,patient_cn,patient_city) VALUES (%s,%s,%s,%s)', (name,dob,cn,city))
+             cursor.execute('INSERT INTO patients (patient_name,patient_dob,patient_cn,patient_city) VALUES (%s,%s,%s,%s)', (name,dob,cn,city))
              conn.commit()
              flash('Registration successful! You can now log in.','success')
              return redirect(url_for('plogin'))
@@ -171,6 +170,7 @@ def book_details():
         patient_age = request.form['patient_age']
         appointment_date = request.form['appointment_date']
         appointment_time = request.form['appointment_time']
+        mode=request.form['mode']
         payment_option = request.form['payment_option']
 
         # Database connection
@@ -180,8 +180,8 @@ def book_details():
         try:
             # Insert query
             cursor.execute(
-                'INSERT INTO booking (patient_name, patient_age, appointment_date, appointment_time, payment_option) VALUES (%s, %s, %s, %s, %s)',
-                (patient_name, patient_age, appointment_date, appointment_time, payment_option)
+                'INSERT INTO appointment (patient_id,doctor_id,patient_name, patient_age, appointment_date, appointment_time,appointment_mode, payment_option,doctor_name) VALUES (%s, %s, %s, %s, %s,%s,%s,%s,%s)',
+                (session.get('pat_id'),session.get(''),patient_name, patient_age, appointment_date, appointment_time,mode, payment_option,session.get('doc_name'))
             )
             conn.commit()  # Save changes
             return redirect(url_for('phome'))
@@ -205,7 +205,7 @@ def pappointment():
 
     try:
         # Fetch all appointments from the database
-        cursor.execute("SELECT * FROM booking WHERE patient_name=%s", (session['username'],))
+        cursor.execute("SELECT * FROM appointment WHERE patient_name=%s", (session['pat_name'],))
 
         appointments = cursor.fetchall()  # Get all rows as a list of dictionaries
 
