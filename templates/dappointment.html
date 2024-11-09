@@ -6,27 +6,26 @@
     <title>My Appointments</title>
     <link rel="stylesheet" href="/static/css/nav.css">
 
-    <link rel="stylesheet" href="/static/css/pappointment.css">
+    <link rel="stylesheet" href="/static/css/dappointment.css">
 </head>
 <body>
     <nav>
         <div class="logo-container">
           <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
-          <a href="phome">
+          <a href="dhome">
           <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
           </a>
         </div>
           <ul>
-              <li><a href="phome">Home</a></li>
-              <li><a href="pappointment">My Appointments</a></li>
-              <li><a href="tips">Health Tips</a></li>
+              <li><a href="dhome">Home</a></li>
+              <li><a href="dappointment">My Appointments</a></li>
               <li class="profile">
                 <a href="#" onclick="toggleDropdown(event)">
                   <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
                 </a>
                 <div class="dropdown-menu">
                   <a href="user_profile">User Profile</a>
-                  <a href="plogout">Logout</a>
+                  <a href="dlogout">Logout</a>
                 </div>
               </li>
           </ul>
@@ -63,6 +62,6 @@
             {% endif %}
         </tbody>
     </table>
-    <script src="/static/js/pappointment.js"></script>
+    <script src="/static/js/dappointment.js"></script>
 </body>
 </html>

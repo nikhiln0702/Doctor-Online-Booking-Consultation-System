@@ -34,11 +34,8 @@ def dlogin():
             session['user_id'] = user['user_id']
             return redirect(url_for('dhome'))
         else:
-            if 'invalid_login' not in session or not session['invalid_login']:
                 flash('Invalid username or password','error')
-                session['invalid_login'] = False
-    else:
-        session['invalid_login'] = False
+   
     return render_template('dlogin.html')
 
 #patient login
@@ -90,8 +87,16 @@ def signup():
 def phome():
     user_name = session.get('username', 'Guest')
     if 'username' not in session:
-        return redirect(url_for('login'))
+        return redirect(url_for('plogin'))
     return render_template('phome.html', user_name=session['username'])
+
+
+@app.route('/dhome')
+def dhome():
+    user_name = session.get('username', 'Guest')
+    if 'username' not in session:
+        return redirect(url_for('dlogin'))
+    return render_template('dhome.html', user_name=session['username'])
 
 
 #registration_details
@@ -189,12 +194,23 @@ def pappointment():
     # Render the appointments.html template and pass the appointments data
     return render_template("pappointment.html", appointments=appointments)
 
+@app.route('/dappointment')
+def dappointment():
+    
+    return render_template("dappointment.html")
+
 #logout
 @app.route('/plogout')
 def plogout():
     session.pop('username', None)
     session.pop('user_id', None)
     return redirect(url_for('plogin'))
+
+@app.route('/dlogout')
+def dlogout():
+    session.pop('username', None)
+    session.pop('user_id', None)
+    return redirect(url_for('dlogin'))
 
 
 #acknowlegement form

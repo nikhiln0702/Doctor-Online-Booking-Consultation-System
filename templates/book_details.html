@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,30 +10,31 @@
 
     <link rel="stylesheet" href="/static/css/book_details.css">
 </head>
+
 <body class="book_details">
     <nav>
         <div class="logo-container">
-          <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
-          <a href="phome">
-          <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
-          </a>
+            <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+            <a href="phome">
+                <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+            </a>
         </div>
-          <ul>
-              <li><a href="phome">Home</a></li>
-              <li><a href="pappointment">My Appointments</a></li>
-              <li><a href="#">Health Tips</a></li>
-              <li class="profile">
+        <ul>
+            <li><a href="phome">Home</a></li>
+            <li><a href="pappointment">My Appointments</a></li>
+            <li><a href="tips">Health Tips</a></li>
+            <li class="profile">
                 <a href="#" onclick="toggleDropdown(event)">
-                  <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
+                    <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
                 </a>
                 <div class="dropdown-menu">
-                  <a href="user_profile">User Profile</a>
-                  <a href="plogout">Logout</a>
+                    <a href="user_profile">User Profile</a>
+                    <a href="plogout">Logout</a>
                 </div>
-              </li>
-          </ul>
-      </nav>
-      
+            </li>
+        </ul>
+    </nav>
+
 
     <div class="container">
         <h2>Book an Appointment</h2>
@@ -69,6 +71,15 @@
                 </select>
             </div>
 
+            <!-- Consultation Mode -->
+            <div class="form-group">
+                <label for="mode">Consultation Mode:</label>
+                <select id="mode" name="mode" required>
+                    <option value="online">Online</option>
+                    <option value="offline">Offline</option>
+                </select>
+            </div>
+
             <!-- Payment Method -->
             <div class="form-group">
                 <label for="payment_option">Payment Option</label>
@@ -81,9 +92,12 @@
 
             <!-- Confirmation Buttons -->
             <div class="form-group">
-                <button type="submit"  class="button">Book Appointment</button><br>
-                <button type="button" class="button cancel-button" >Cancel</button>
+                <button type="submit" class="button">Book Appointment</button><br>
+                <button type="button" class="button cancel-button" id="cancel">Cancel</button>
             </div>
+
+             <!-- Note -->
+    <p class="note">Note: For online consultations, a meet link will be sent to your registered email ID.</p>
         </form>
     </div>
 
@@ -91,4 +105,5 @@
     <script src="/static/js/book_details.js"></script>
 
 </body>
+
 </html>

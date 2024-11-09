@@ -5,9 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Health Tips</title>
   <link rel="stylesheet" href="/static/css/tips.css">
- 
+  <link rel="stylesheet" href="/static/css/nav.css">
+
 </head>
 <body>
+  <nav>
+    <div class="logo-container">
+        <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+        <a href="phome">
+            <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+        </a>
+    </div>
+    <ul>
+        <li><a href="phome">Home</a></li>
+        <li><a href="pappointment">My Appointments</a></li>
+        <li><a href="tips">Health Tips</a></li>
+        <li class="profile">
+            <a href="#" onclick="toggleDropdown(event)">
+                <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
+            </a>
+            <div class="dropdown-menu">
+                <a href="user_profile">User Profile</a>
+                <a href="plogout">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
   <div class="container">
     <h1>Health Tips</h1>
 
