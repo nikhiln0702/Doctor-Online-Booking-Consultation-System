@@ -1,0 +1,56 @@
+style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      padding: 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #007bff;
+    }
+
+    .tip-card {
+      background-color: #fff;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .tip-card h2 {
+      font-size: 1.5rem;
+      color: #007bff;
+      margin-bottom: 0.5rem;
+    }
+
+    .tip-card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .tip-card span {
+      font-style: italic;
+      color: #888;
+    }

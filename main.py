@@ -196,9 +196,17 @@ def plogout():
     session.pop('user_id', None)
     return redirect(url_for('plogin'))
 
+
+#acknowlegement form
 @app.route("/acknow")
 def acknow():
     return render_template('acknow.html')
+
+
+#tips
+@app.route("/tips")
+def tips():
+    return render_template('tips.html')
 
 
 @app.route("/user")

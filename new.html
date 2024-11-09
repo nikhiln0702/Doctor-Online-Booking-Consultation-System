@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment</title>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 500px;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .form-container h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .form-container h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .form-group select {
+      appearance: none;
+      background-color: #fff;
+    }
+
+    .form-group input[type="date"] {
+      padding: 0.45rem;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    .submit-btn,
+    .cancel-btn {
+      width: 48%;
+      padding: 0.5rem; /* Reduced button padding */
+      font-size: 1rem;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn {
+      background-color: #007bff;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .cancel-btn {
+      background-color: #6c757d;
+    }
+
+    .cancel-btn:hover {
+      background-color: #5a6268;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Appointment</h1>
+    <h2>Book an Appointment</h2>
+    <form action="/submit_appointment" method="POST">
+      <!-- Patient's Name -->
+      <div class="form-group">
+        <label for="name">Patient's Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="0" required>
+      </div>
+
+      <!-- Email ID -->
+      <div class="form-group">
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <!-- Date (starting from tomorrow) -->
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" min="" required>
+      </div>
+
+      <!-- Time Options -->
+      <div class="form-group">
+        <label for="time">Time:</label>
+        <select id="time" name="time" required>
+          <option value="10am-12pm">10:00 AM - 12:00 PM</option>
+          <option value="2pm-5pm">2:00 PM - 5:00 PM</option>
+        </select>
+      </div>
+
+      <!-- Consultation Mode -->
+      <div class="form-group">
+        <label for="mode">Consultation Mode:</label>
+        <select id="mode" name="mode" required>
+          <option value="online">Online</option>
+          <option value="offline">Offline</option>
+        </select>
+      </div>
+
+      <!-- Payment Option -->
+      <div class="form-group">
+        <label for="payment">Payment Option:</label>
+        <select id="payment" name="payment" required>
+          <option value="credit_card">Credit Card</option>
+          <option value="upi">UPI</option>
+        </select>
+      </div>
+
+      <!-- Submit and Cancel Buttons -->
+      <div class="button-container">
+        <button type="submit" class="submit-btn">Book Appointment</button>
+        <button type="button" class="cancel-btn" onclick="window.history.back();">Cancel</button>
+      </div>
+    </form>
+
+    <!-- Note -->
+    <p class="note">Note: For online consultations, a meet link will be sent to your registered email ID.</p>
+  </div>
+
+  <script>
+    // Set the minimum date to tomorrow's date
+    const dateInput = document.getElementById("date");
+    const today = new Date();
+    today.setDate(today.getDate() + 1); // Tomorrow's date
+    const minDate = today.toISOString().split("T")[0];
+    dateInput.min = minDate;
+  </script>
+</body>
+</html>
