@@ -42,7 +42,7 @@
             <p><strong>Experience:</strong> {{ doctor[2] }} years</p>
             <div class="button-container">
             <a href="book_details">
-                <button class="booking-button">Book Appointment</button>
+                <button class="booking-button" onclick="bookAppointment('{{ doctor[0] }}', '{{ doctor[1] }}', '{{ doctor[3] }}')">Book Appointment</button>
             </a>
             </div>
         </div>

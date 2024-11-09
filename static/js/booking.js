@@ -15,3 +15,11 @@ function toggleDropdown(event) {
       }
     }
   }
+  function bookAppointment(doctorName, specialization, doctorId) {
+    // Store details in sessionStorage
+    sessionStorage.setItem('doctor_name', doctorName);
+    sessionStorage.setItem('specialization', specialization);
+    sessionStorage.setItem('doctor_id', doctorId);
+    // Redirect to the booking details page
+    window.location.href = "book_details";
+}

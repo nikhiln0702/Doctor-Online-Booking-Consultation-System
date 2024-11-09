@@ -10,7 +10,7 @@ def sql_connection():
     conn = sql.connect(host="localhost",
             user='root',
             password='Root12345',
-            database='doc_consult'
+            database='livemedico'
 )
     return conn
 
@@ -150,7 +150,7 @@ def details():
 def get_doctors():
     conn=sql_connection()
     cursor=conn.cursor()
-    cursor.execute('SELECT name,speciality,experience,qualification FROM doctor')
+    cursor.execute('SELECT doctor_name,doctor_speciality,doctor_experience,doctor_id FROM doctor')
     doctors = cursor.fetchall()
     conn.close()
     return doctors
@@ -172,6 +172,8 @@ def book_details():
         appointment_time = request.form['appointment_time']
         mode=request.form['mode']
         payment_option = request.form['payment_option']
+        doctor_name=request.form['doctor_name']
+        doctor_id=request.form['doctor_id']
 
         # Database connection
         conn = sql_connection()
@@ -181,7 +183,7 @@ def book_details():
             # Insert query
             cursor.execute(
                 'INSERT INTO appointment (patient_id,doctor_id,patient_name, patient_age, appointment_date, appointment_time,appointment_mode, payment_option,doctor_name) VALUES (%s, %s, %s, %s, %s,%s,%s,%s,%s)',
-                (session.get('pat_id'),session.get(''),patient_name, patient_age, appointment_date, appointment_time,mode, payment_option,session.get('doc_name'))
+                (session.get('pat_id'),doctor_id,patient_name, patient_age, appointment_date, appointment_time,mode, payment_option,doctor_name)
             )
             conn.commit()  # Save changes
             return redirect(url_for('phome'))
@@ -205,7 +207,7 @@ def pappointment():
 
     try:
         # Fetch all appointments from the database
-        cursor.execute("SELECT * FROM appointment WHERE patient_name=%s", (session['pat_name'],))
+        cursor.execute("SELECT * FROM appointment WHERE patient_id=%s", (session['pat_id'],))
 
         appointments = cursor.fetchall()  # Get all rows as a list of dictionaries
 
@@ -223,8 +225,49 @@ def pappointment():
 
 @app.route('/dappointment')
 def dappointment():
-    
-    return render_template("dappointment.html")
+    # Connect to the database
+    conn = sql_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    try:
+        # Fetch all appointments from the database
+        cursor.execute("SELECT * FROM appointment WHERE doctor_id=%s", (session['doc_id'],))
+
+        appointments = cursor.fetchall()  # Get all rows as a list of dictionaries
+
+    except Exception as e:
+        print("Error fetching data:", e)
+        appointments = []  # In case of an error, return an empty list
+        flash("Error retrieving appointments.", "error")
+
+    finally:
+        cursor.close()
+        conn.close()
+    return render_template("dappointment.html",appointments=appointments)
+
+@app.route("/aappointments")
+def aappointments():
+    # Connect to the database
+    conn = sql_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    try:
+        # Fetch all appointments from the database
+        cursor.execute("SELECT * FROM appointment")
+
+        appointments = cursor.fetchall()  # Get all rows as a list of dictionaries
+
+    except Exception as e:
+        print("Error fetching data:", e)
+        appointments = []  # In case of an error, return an empty list
+        flash("Error retrieving appointments.", "error")
+
+    finally:
+        cursor.close()
+        conn.close()
+    return render_template('aapointments.html',appointments=appointments)
+
+
 
 #logout
 @app.route('/plogout')
@@ -249,6 +292,7 @@ def alogout():
 #acknowlegement form
 @app.route("/acknow")
 def acknow():
+    
     return render_template('acknow.html')
 
 
@@ -260,11 +304,78 @@ def tips():
 #profile pages
 @app.route("/pprofile")
 def pprofile():
-    return render_template('pprofile.html')
+    # Connect to the database
+    conn = sql_connection()
+    cursor = conn.cursor(dictionary=True)
+    try:
+        # Fetch all appointments from the database
+        cursor.execute("SELECT patient_name,patient_email,patient_username,patient_dob,patient_cn,patient_city FROM patient where patient_id=%s",session.get('pat_id'))
+
+        profile = cursor.fetchone()
+    except Exception as e:
+        print("Error fetching data:", e)
+        profile = []  # In case of an error, return an empty list
+        flash("Error retrieving appointments.", "error")
+
+    finally:
+        cursor.close()
+        conn.close()
+    return render_template('pprofile.html',profile=profile)
 
 @app.route("/dprofile")
 def dprofile():
-    return render_template('dprofile.html')
+    # Connect to the database
+    conn = sql_connection()
+    cursor = conn.cursor(dictionary=True)
+    try:
+        # Fetch all appointments from the database
+        cursor.execute("SELECT doctor_name,doctor_username,doctor_speciality,doctor_experience,doctor_city FROM doctor where doctor_id=%s",session.get('doc_id'))
+
+        profile = cursor.fetchone()
+    except Exception as e:
+        print("Error fetching data:", e)
+        profile = []  # In case of an error, return an empty list
+        flash("Error retrieving appointments.", "error")
+
+    finally:
+        cursor.close()
+        conn.close()
+    return render_template('dprofile.html',profile=profile)
+
+@app.route("/editprofile",methods=['GET', 'POST'])
+def editprofile():
+    # Connect to the database
+    conn = sql_connection()
+    cursor = conn.cursor(dictionary=True)
+    if request.method == 'POST':
+        # Update user details from the form submission
+        name = request.form['name']
+        email = request.form['email']
+        username = request.form['username']
+        dob = request.form['dob']
+        phone = request.form['phone']
+        city = request.form['city']
+
+        # SQL query to update the user's profile
+        cursor.execute("UPDATE users SET name=%s, email=%s, username=%s, dob=%s, phone=%s, city=%s WHERE user_id=%s", 
+                       (name, email, username, dob, phone, city, session.get['pat_id']))
+        conn.commit()  # Commit the changes to the database
+    try:
+        # Fetch all appointments from the database
+        cursor.execute("SELECT patient_name,patient_email,patient_username,patient_dob,patient_cn,patient_city FROM patient where patient_id=%s",session.get('pat_id'))
+
+        profile = cursor.fetchone()
+    except Exception as e:
+        print("Error fetching data:", e)
+        profile = []  # In case of an error, return an empty list
+        flash("Error retrieving appointments.", "error")
+
+    finally:
+        cursor.close()
+        conn.close()
+    
+    return render_template('editprofile.html')
+
 
 @app.route("/users")
 def users():
@@ -277,9 +388,6 @@ def doctor():
 @app.route("/add")
 def add():
     return render_template('add.html')
-@app.route("/aappointments")
-def aappointments():
-    return render_template('aapointments.html')
 
 
 

@@ -26,9 +26,13 @@ function toggleDropdown(event) {
       }
     }
   }
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("cancel").addEventListener("click", function () {
-      window.location.href = '/booking';
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("cancel").addEventListener("click", function () {
+    window.location.href = '/booking';
   });
-  });
+});
+// Retrieve doctor details from sessionStorage
+document.getElementById('doctor_name').value = sessionStorage.getItem('doctor_name');
+document.getElementById('doctor_id').value = sessionStorage.getItem('doctor_id');
+document.getElementById('specialization').value = sessionStorage.getItem('specialization')
   

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/pprofile.css">
+  <link rel="stylesheet" href="/static/css/nav.css">
+  <title>Edit Profile</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+          <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo image path -->
+          <a href="phome">
+          <span class="site-title">HealthCare</span> <!-- Replace with your site title -->
+          </a>
+        </div>
+          <ul>
+              <li><a href="phome">Home</a></li>
+              <li><a href="pappointment">My Appointments</a></li>
+              <li><a href="tips">Health Tips</a></li>
+              <li class="profile">
+                <a href="#" onclick="toggleDropdown(event)">
+                  <img src="/static/images/user_pr.png" alt="user_profile" class="user_profile">
+                </a>
+                <div class="dropdown-menu">
+                  <a href="pprofile">User Profile</a>
+                  <a href="plogout">Logout</a>
+                </div>
+              </li>
+          </ul>
+      </nav>
+
+  <div class="edit-profile-container">
+    <h1>Edit Profile</h1>
+    <form action="/update_profile" method="POST">
+        <table>
+          <tr>
+            <td><strong>Name:</strong></td>
+            <td><input type="text" id="name" name="name" value="{{ profile[0] }}" required></td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td><input type="email" id="email" name="email" value="{{ profile[1] }}" required></td>
+          </tr>
+          <tr>
+            <td><strong>Username:</strong></td>
+            <td><input type="text" id="username" name="username" value="{{ profile[2] }}" required></td>
+          </tr>
+          <tr>
+            <td><strong>Date Of Birth:</strong></td>
+            <td><input type="date" id="dob" name="dob" value="{{ profile[3] }}" required></td>
+          </tr>
+          <tr>
+            <td><strong>Contact No.:</strong></td>
+            <td><input type="text" id="phone" name="phone" value="{{ profile[4] }}" required></td>
+          </tr>
+          <tr>
+            <td><strong>City:</strong></td>
+            <td><input type="text" id="city" name="city" value="{{ profile[5] }}" required></td>
+          </tr>
+        </table>
+        
+        <div>
+          <button type="submit">Update Profile</button>
+        </div>
+      </form>
+      
+    
+  </div>
+
+  <script src="/static/js/pprofile.js"></script>
+</body>
+</html>
