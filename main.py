@@ -405,7 +405,7 @@ def users():
         cursor.close()
         conn.close()
 
-    # Render the appointments.html template and pass the appointments data
+    # Render the users.html template and pass the users data
     return render_template("users.html", patients=patients)
 
 @app.route("/doctor")
@@ -429,7 +429,7 @@ def doctor():
         cursor.close()
         conn.close()
 
-    # Render the appointments.html template and pass the appointments data
+    # Render the doctor.html template and pass the doctor data
     return render_template("doctor.html", doctors=doctors)
     
 
@@ -458,16 +458,19 @@ def edit_doctor(doctor_id):
     conn.close()
     return render_template('edit_doctor.html', doctor=doctor)
 
-@app.route("/delete_doctor/<int:doctor_id>", methods=['POST'])
+@app.route('/delete_doctor/<int:doctor_id>', methods=['POST'])
 def delete_doctor(doctor_id):
-    conn = sql_connection()
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM doctors WHERE doctor_id = %s", (doctor_id,))
-    conn.commit()
-    cursor.close()
-    conn.close()
-    flash("Doctor deleted successfully.", "success")
-    return redirect(url_for('doctor'))
+    if request.form.get('_method') == 'DELETE':
+        conn = sql_connection()
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM doctors WHERE doctor_id = %s", (doctor_id,))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        flash("Doctor deleted successfully.", "success")
+        return redirect(url_for('doctor'))
+    return "Invalid method", 405
+
 
 
 @app.route("/add",methods=['GET', 'POST'])

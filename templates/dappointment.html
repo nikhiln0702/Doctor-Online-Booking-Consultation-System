@@ -41,6 +41,7 @@
                 <th>Patient Age</th>
                 <th>Appointment Date</th>
                 <th>Appointment Time</th>
+                <th>Appointment Mode</th>
                 <th>Payment Option</th>
             </tr>
         </thead>
@@ -52,6 +53,7 @@
                         <td>{{ appointment['patient_age'] }}</td>
                         <td>{{ appointment['appointment_date'] }}</td>
                         <td>{{ appointment['appointment_time'] }}</td>
+                        <td>{{ appointment['appointment_mode'] }}</td>
                         <td>{{ appointment['appointment_payment'] }}</td>
                     </tr>
                 {% endfor %}
