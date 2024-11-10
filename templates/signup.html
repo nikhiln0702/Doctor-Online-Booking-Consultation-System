@@ -17,7 +17,16 @@
             <input type="email" class="logTxt" placeholder="Enter your email" name="email" required><br><br>
             <label class="pl">Password</label>
             <input type="password" class="logTxt" placeholder="Enter your password" name="password" required><br><br>
+            <label class="pl">Name</label>
+            <input type="text" class="logTxt"  name="name" required><br><br>
+            <label class="pl" name="dob" >Date Of Birth</label>
+            <input type="date" class="logTxt"  name="dob" id="dob" required><br><br>
+            <label class="pl" name="cn">Contact No.</label>
+            <input type="tel"  class="logTxt"  name="cn" required><br><br>
+            <label class="pl">City</label>
+            <input type="text" class="logTxt" name="city" required><br><br>
             <button class="loginButton" type="submit">Register</button>
+
         </form>
         <p>Already have an account? <a href="{{ url_for('plogin') }}">Login here</a></p>
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -28,7 +37,7 @@
         {% endif %}
         {% endwith %}
     </div>
-  <script src="/static/js/script.js"  defer></script>
+  <script src="/static/js/details.js"  defer></script>
 </body>
 </html>
 

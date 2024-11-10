@@ -33,36 +33,38 @@
 
   <div class="edit-profile-container">
     <h1>Edit Profile</h1>
-    <form action="/update_profile" method="POST">
+    <form action="/editprofile" method="POST">
         <table>
           <tr>
             <td><strong>Name:</strong></td>
-            <td><input type="text" id="name" name="name" value="{{ profile[0] }}" required></td>
+            <td><input type="text" id="name" name="name" value="{{ profile['patient_name'] }}" required></td>
           </tr>
           <tr>
             <td><strong>Email:</strong></td>
-            <td><input type="email" id="email" name="email" value="{{ profile[1] }}" required></td>
+            <td><input type="email" id="email" name="email" value="{{ profile['patient_email'] }}" required></td>
           </tr>
           <tr>
             <td><strong>Username:</strong></td>
-            <td><input type="text" id="username" name="username" value="{{ profile[2] }}" required></td>
+            <td><input type="text" id="username" name="username" value="{{ profile['patients_username'] }}" required></td>
           </tr>
           <tr>
             <td><strong>Date Of Birth:</strong></td>
-            <td><input type="date" id="dob" name="dob" value="{{ profile[3] }}" required></td>
+            <td><input type="date" id="dob" name="dob" value="{{ profile['patient_dob'] }}" required></td>
           </tr>
           <tr>
             <td><strong>Contact No.:</strong></td>
-            <td><input type="text" id="phone" name="phone" value="{{ profile[4] }}" required></td>
+            <td><input type="text" id="phone" name="phone" value="{{ profile['patient_cn'] }}" required></td>
           </tr>
           <tr>
             <td><strong>City:</strong></td>
-            <td><input type="text" id="city" name="city" value="{{ profile[5] }}" required></td>
+            <td><input type="text" id="city" name="city" value="{{ profile['patient_city'] }}" required></td>
           </tr>
         </table>
         
         <div>
+        
           <button type="submit">Update Profile</button>
+        
         </div>
       </form>
       

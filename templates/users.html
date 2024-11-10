@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/static/css/pappointment.css">
   <link rel="stylesheet" href="/static/css/nav.css">
 
-  <title>User Profile</title>
+  <title>Users</title>
 </head>
 <body>
     <nav>
@@ -32,22 +32,28 @@
     <table>
         <thead>
             <tr>
-                <th>Patient Name</th>
-                <th>Patient Age</th>
-                <th>Appointment Date</th>
-                <th>Appointment Time</th>
-                <th>Payment Option</th>
+              <th>Patient Id</th>
+              <th>Patient Name</th>
+              <th>Patient Email</th>
+              <th>Pateint Username</th>
+              <th>Patient Hashed Password</th>
+              <th>Patient DoB</th>
+              <th>Patient Contact</th>
+              <th>Patient City</th>
             </tr>
         </thead>
         <tbody>
-            {% if appointments %}
-                {% for appointment in appointments %}
+            {% if patients %}
+                {% for patient in patients %}
                     <tr>
-                        <td>{{ appointment['patient_name'] }}</td>
-                        <td>{{ appointment['patient_age'] }}</td>
-                        <td>{{ appointment['appointment_date'] }}</td>
-                        <td>{{ appointment['appointment_time'] }}</td>
-                        <td>{{ appointment['payment_option'] }}</td>
+                        <td>{{ patient['patient_id'] }}</td>
+                        <td>{{ patient['patient_name'] }}</td>
+                        <td>{{ patient['patient_email'] }}</td>
+                        <td>{{ patient['patients_username'] }}</td>
+                        <td>{{ patient['patient_password'] }}</td>
+                        <td>{{ patient['patient_dob'] }}</td>
+                        <td>{{ patient['patient_cn'] }}</td>
+                        <td>{{ patient['patient_city'] }}</td>
                     </tr>
                 {% endfor %}
             {% else %}

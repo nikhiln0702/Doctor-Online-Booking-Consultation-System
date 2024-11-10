@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/edit_doctor.css">
     <link rel="stylesheet" href="/static/css/nav.css">
-    <title>Add Doctor</title>
+    <title>Edit Doctor</title>
 </head>
 <body>
     <nav>
@@ -28,28 +28,24 @@
               </li>
           </ul>
       </nav>
-    <h1>Add Doctor</h1>
-    <form action="{{ url_for('add')}}" method="POST">
+    <h1>Edit Doctor</h1>
+    <form action="{{ url_for('edit_doctor', doctor_id=doctor['doctor_id']) }}" method="POST">
         <label for="doctor_name">Name:</label>
-        <input type="text" id="doctor_name" name="doctor_name"  required>
+        <input type="text" id="doctor_name" name="doctor_name" value="{{ doctor['doctor_name'] }}" required>
         
         <label for="doctor_speciality">Speciality:</label>
-        <input type="text" id="doctor_speciality" name="doctor_speciality"  required>
+        <input type="text" id="doctor_speciality" name="doctor_speciality" value="{{ doctor['doctor_speciality'] }}" required>
         
         <label for="doctor_experience">Experience:</label>
-        <input type="text" id="doctor_experience" name="doctor_experience"  required>
+        <input type="text" id="doctor_experience" name="doctor_experience" value="{{ doctor['doctor_experience'] }}" required>
         
         <label for="doctor_username">Username:</label>
-        <input type="text" id="doctor_username" name="doctor_username"  required>
-
-        <label for="doctor_username">Password:</label>
-        <input type="text" id="doctor_password" name="doctor_password"  required>
+        <input type="text" id="doctor_username" name="doctor_username" value="{{ doctor['doctor_username'] }}" required>
         
         <label for="doctor_city">City:</label>
-        <input type="text" id="doctor_city" name="doctor_city"  required>
+        <input type="text" id="doctor_city" name="doctor_city" value="{{ doctor['doctor_city'] }}" required>
         
-        <button type="submit">Add Doctor</button>
+        <button type="submit">Update Doctor</button>
     </form>
-    <script src="/static/js/ahome.js"></script>
 </body>
 </html>

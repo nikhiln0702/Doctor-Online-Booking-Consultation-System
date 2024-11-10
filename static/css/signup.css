@@ -7,7 +7,6 @@ body.login {
     margin: 0;
     background: linear-gradient(135deg, #00aaff, #0077b6); /* Light blue gradient */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
 }
 
 /* Login Container Styling */
