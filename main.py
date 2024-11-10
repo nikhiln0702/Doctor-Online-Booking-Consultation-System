@@ -51,7 +51,6 @@ def plogin():
         user = cursor.fetchone()
         conn.close()
         if user and bcrypt.check_password_hash(user['patient_password'], password):
-            print("User authenticated, redirecting to phome...")
             session['pat_id'] = user['patient_id']
             session['name'] = user['patient_name']
             session['p_username']=user['patients_username']
@@ -192,7 +191,7 @@ def book_details():
                 (session['pat_id'],doctor_id,patient_name, patient_age, appointment_date, appointment_time,mode, payment_option,doctor_name)
             )
             conn.commit()  # Save changes
-            return redirect(url_for('phome'))
+            return redirect(url_for('acknow'))
         
         except Exception as e:
             print("Error:", e)  # Print the error message for debugging
@@ -280,19 +279,19 @@ def aappointments():
 def plogout():
     session.pop('username', None)
     session.pop('user_id', None)
-    return redirect(url_for('plogin'))
+    return redirect(url_for('index'))
 
 @app.route('/dlogout')
 def dlogout():
     session.pop('username', None)
     session.pop('user_id', None)
-    return redirect(url_for('dlogin'))
+    return redirect(url_for('index'))
 
 @app.route('/alogout')
 def alogout():
     session.pop('username', None)
     session.pop('user_id', None)
-    return redirect(url_for('alogin'))
+    return redirect(url_for('index'))
 
 
 #acknowlegement form
@@ -335,7 +334,7 @@ def dprofile():
     cursor = conn.cursor(dictionary=True)
     try:
         # Fetch all appointments from the database
-        cursor.execute("SELECT doctor_name,doctor_username,doctor_speciality,doctor_experience,doctor_city FROM doctor where doctor_id=%s",(session[('doc_id')],))
+        cursor.execute("SELECT doctor_name,doctor_username,doctor_speciality,doctor_experience,doctor_city FROM doctors where doctor_id=%s",(session[('doc_id')],))
 
         profile = cursor.fetchone()
     except Exception as e:
@@ -450,7 +449,6 @@ def edit_doctor(doctor_id):
         cursor.execute("UPDATE doctors SET doctor_name=%s, doctor_speciality=%s, doctor_experience=%s, doctor_username=%s, doctor_city=%s WHERE doctor_id=%s", 
                        (name, speciality, experience, username, city, doctor_id))
         conn.commit()
-        flash("Doctor information updated successfully.", "success")
         return redirect(url_for('doctor'))
     
     # Fetch current doctor data to pre-fill the form
